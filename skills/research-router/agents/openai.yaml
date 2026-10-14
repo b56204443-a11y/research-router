@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research Router"
+  short_description: "按需选择论文、文献检索、统计分析与科学计算模块"
+  default_prompt: "Use $research-router to select and apply the right research module for this task."
+
+policy:
+  allow_implicit_invocation: true

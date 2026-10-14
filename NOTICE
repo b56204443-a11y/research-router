@@ -1,0 +1,16 @@
+Research Router
+Copyright (c) 2026 Research Router contributors
+
+Original router, installation and release tooling is MIT-licensed. Vendored modules
+retain their upstream and component-specific terms. This is a curated bundle of
+third-party work, not a claim of authorship over its research modules.
+
+Pinned sources and file hashes: skill-libraries/research-router/provenance.json
+Upstream licenses and attribution: skill-libraries/research-router/licenses/
+Per-module modifications: skill-libraries/research-router/modules/*/ORIGIN.md
+Excluded modules and reasons: skill-libraries/research-router/excluded-modules.json
+
+The Boom5426 source includes Apache-2.0 components and fragments; its NOTICE,
+ATTRIBUTION.md and LICENSE-APACHE are preserved. Yuan1z0825/nature-skills modules
+remain Apache-2.0. All upstream authors retain their copyrights. Dependencies,
+services, model weights and research data have separate terms and are not bundled.

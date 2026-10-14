@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "modules": [
+    {
+      "name": "deepspot-m",
+      "folder": "deepspot-m",
+      "description": "Generate transcriptome-wide virtual spatial transcriptomics from H&E histology with DeepSpot-M. Use when you need spatial gene expression in log1p-CPM for 224x224 tiles at about 20x, want to query protein-coding genes by symbol instead of a fixed panel, or want to run prediction across a whole slide after tiling with histolab.",
+      "category": "science",
+      "source_repo": "K-Dense-AI/scientific-agent-skills",
+      "source_commit": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+      "reason": "SKILL.md declares PolyForm-Noncommercial-1.0.0; clarify skill versus software licensing."
+    },
+    {
+      "name": "docx",
+      "folder": "docx",
+      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.",
+      "category": "artifact",
+      "source_repo": "K-Dense-AI/scientific-agent-skills",
+      "source_commit": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+      "reason": "Bundled LICENSE.txt explicitly prohibits redistribution."
+    },
+    {
+      "name": "glycoengineering",
+      "folder": "glycoengineering",
+      "description": "Analyze and engineer protein glycosylation. Scan sequences for N-glycosylation sequons (N-X-S/T), predict O-glycosylation hotspots, and access curated glycoengineering tools (NetOGlyc, GlycoShield, GlycoWorkbench). For glycoprotein engineering, therapeutic antibody optimization, and vaccine design.",
+      "category": "science",
+      "source_repo": "K-Dense-AI/scientific-agent-skills",
+      "source_commit": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+      "reason": "SKILL.md declares Unknown; the scope of the license is unresolved."
+    },
+    {
+      "name": "pdf",
+      "folder": "pdf",
+      "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+      "category": "artifact",
+      "source_repo": "K-Dense-AI/scientific-agent-skills",
+      "source_commit": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+      "reason": "Bundled LICENSE.txt explicitly prohibits redistribution."
+    },
+    {
+      "name": "phylogenetics",
+      "folder": "phylogenetics",
+      "description": "Build and analyze phylogenetic trees using MAFFT (multiple alignment), IQ-TREE 2 (maximum likelihood), and FastTree (fast NJ/ML). Visualize with ETE3 or FigTree. For evolutionary analysis, microbial genomics, viral phylodynamics, protein family analysis, and molecular clock studies.",
+      "category": "science",
+      "source_repo": "K-Dense-AI/scientific-agent-skills",
+      "source_commit": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+      "reason": "SKILL.md declares Unknown; the scope of the license is unresolved."
+    },
+    {
+      "name": "pptx",
+      "folder": "pptx",
+      "description": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user mentions \"deck,\" \"slides,\" \"presentation,\" or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. If a .pptx or .potx file needs to be opened, created, or touched, use this skill.",
+      "category": "artifact",
+      "source_repo": "K-Dense-AI/scientific-agent-skills",
+      "source_commit": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+      "reason": "Bundled LICENSE.txt explicitly prohibits redistribution."
+    },
+    {
+      "name": "primekg",
+      "folder": "primekg",
+      "description": "Query the Precision Medicine Knowledge Graph (PrimeKG) for multiscale biological data including genes, drugs, diseases, phenotypes, and more.",
+      "category": "science",
+      "source_repo": "K-Dense-AI/scientific-agent-skills",
+      "source_commit": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+      "reason": "SKILL.md declares Unknown and refers to a private local dataset path."
+    },
+    {
+      "name": "rebuttal-response",
+      "folder": "rebuttal-response",
+      "description": "Analyze, draft, revise, or audit scientific peer-review response letters and point-by-point rebuttals. Use for reviewer comments, response letters, rebuttals, revision summaries, quoted manuscript changes, replies that must align with a manuscript or Supplementary Information, and submission-ready checks of direct question-answer alignment, evidence, figures, tables, notes, panels, terminology, numbers, and internal citations. Especially useful when replies must reuse the reviewer's terms, map every sub-question to an explicit answer, report new analyses or experiments, identify exact revision locations, or distinguish mandatory fixes from optional polishing.",
+      "category": "paper",
+      "source_repo": "Boom5426/Nature-Paper-Skills",
+      "source_commit": "cd0894f24b8739a5ba4197f4a2323c7828fac05d",
+      "reason": "Upstream ATTRIBUTION.md states the adapted text has an unresolved license."
+    },
+    {
+      "name": "rowan",
+      "folder": "rowan",
+      "description": "Rowan is a cloud-native molecular modeling and medicinal-chemistry workflow platform with a Python API. Use for pKa and macropKa prediction, conformer and tautomer ensembles, docking and analogue docking, protein-ligand cofolding, MSA generation, molecular dynamics, permeability, descriptor workflows, and related small-molecule or protein modeling tasks. Ideal for programmatic batch screening, multi-step chemistry pipelines, and workflows that would otherwise require maintaining local HPC/GPU infrastructure.",
+      "category": "science",
+      "source_repo": "K-Dense-AI/scientific-agent-skills",
+      "source_commit": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+      "reason": "SKILL.md declares Proprietary; confirm whether this applies to the skill or the service."
+    },
+    {
+      "name": "what-if-oracle",
+      "folder": "what-if-oracle",
+      "description": "Run structured What-If scenario analysis with 4–6 branch possibility exploration (best, likely, worst, wild card, contrarian, second-order). Use when the user asks speculative what-if questions about uncertain futures, strategic forks, contingency planning, or stress-testing a decision before committing.",
+      "category": "science",
+      "source_repo": "K-Dense-AI/scientific-agent-skills",
+      "source_commit": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+      "reason": "SKILL.md declares CC BY-NC-SA 4.0; held out of the open-source bundle."
+    },
+    {
+      "name": "xlsx",
+      "folder": "xlsx",
+      "description": "Create, edit, analyze, or convert Excel spreadsheets (.xlsx, .xlsm, .xltx) where the workbook file is the primary deliverable. Use for formulas, formatting, financial models, multi-sheet workbooks, and tabular cleanup exported to Excel. Also applies to .csv/.tsv when the user wants spreadsheet output. Do NOT use for Word documents, HTML reports, standalone Python scripts, database pipelines, or Google Sheets API work.",
+      "category": "artifact",
+      "source_repo": "K-Dense-AI/scientific-agent-skills",
+      "source_commit": "9cf7d9aea7d84754db4c167ab04b299d33c444bc",
+      "reason": "Bundled LICENSE.txt explicitly prohibits redistribution."
+    }
+  ]
+}
