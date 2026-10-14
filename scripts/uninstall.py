@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
-import shutil
+import sys
 
 
 def uninstall(home: Path, dry_run: bool = False) -> None:
@@ -16,7 +16,7 @@ def uninstall(home: Path, dry_run: bool = False) -> None:
     if router.is_symlink() or library.is_symlink():
         raise ValueError("Refusing to move a symlink installation")
     marker = library / "installation.json"
-    if not marker.is_file() or json.loads(marker.read_text()).get("managed_by") != "research-router":
+    if not marker.is_file() or json.loads(marker.read_text(encoding="utf-8")).get("managed_by") != "research-router":
         raise ValueError("No installation managed by this installer was found")
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
     backup = home / "research-router-backups" / ("uninstall-" + stamp)
@@ -38,6 +38,8 @@ def uninstall(home: Path, dry_run: bool = False) -> None:
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--codex-home", type=Path, default=Path(os.environ.get("CODEX_HOME", "~/.codex")))
     p.add_argument("--dry-run", action="store_true")

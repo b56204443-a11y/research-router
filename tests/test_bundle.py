@@ -12,7 +12,7 @@ FIND = ROOT / "skills/research-router/scripts/find_modules.py"
 
 def command(script, *args, env=None):
     return subprocess.run([sys.executable, str(script), *map(str, args)], cwd=ROOT,
-                          env=env, capture_output=True, text=True)
+                          env=env, capture_output=True, text=True, encoding="utf-8")
 
 
 class RoutingTests(unittest.TestCase):
@@ -59,7 +59,7 @@ class RoutingTests(unittest.TestCase):
 class InstallationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="research-router-install-")
-        self.home = Path(self.temp.name) / "custom codex home"
+        self.home = Path(self.temp.name) / "custom codex home 科研"
 
     def tearDown(self):
         self.temp.cleanup()

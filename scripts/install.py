@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -46,8 +47,8 @@ def install(home: Path, replace: bool = False, dry_run: bool = False) -> None:
         for name in ["LICENSE", "NOTICE"]:
             shutil.copy2(ROOT / name, staging / "1" / name)
         marker = {"schema_version": 1, "managed_by": "research-router", "module_count":
-                  json.loads((sources[0] / "references/catalog.json").read_text())["module_count"]}
-        (staging / "1" / "installation.json").write_text(json.dumps(marker, indent=2) + "\n")
+                  json.loads((sources[0] / "references/catalog.json").read_text(encoding="utf-8"))["module_count"]}
+        (staging / "1" / "installation.json").write_text(json.dumps(marker, indent=2) + "\n", encoding="utf-8")
         try:
             for i, target in enumerate(targets):
                 target.parent.mkdir(parents=True, exist_ok=True)
@@ -82,4 +83,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
     raise SystemExit(main())

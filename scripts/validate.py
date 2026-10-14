@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 SECRET = re.compile(r"(?<![A-Za-z0-9_-])(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{50,}|sk-(?:proj-)?[A-Za-z0-9_-]{32,}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)")
@@ -13,7 +14,7 @@ SECRET = re.compile(r"(?<![A-Za-z0-9_-])(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat
 
 def validate(root: Path = ROOT) -> None:
     skill = root / "skills/research-router"
-    catalog = json.loads((skill / "references/catalog.json").read_text())
+    catalog = json.loads((skill / "references/catalog.json").read_text(encoding="utf-8"))
     if Path(catalog["library_root"]).is_absolute():
         raise ValueError("Catalog must use a portable relative module directory")
     library = (skill / catalog["library_root"]).resolve()
@@ -27,16 +28,16 @@ def validate(root: Path = ROOT) -> None:
         if not re.fullmatch(r"[a-z0-9-]+", m["folder"]):
             raise ValueError(f"Invalid module folder: {m['folder']}")
         path = library / m["folder"] / "SKILL.md"
-        text = path.read_text()
+        text = path.read_text(encoding="utf-8")
         if not text.startswith("---\n") or not re.search(r"(?m)^name:", text) or not re.search(r"(?m)^description:", text):
             raise ValueError(f"Invalid skill frontmatter: {path}")
         if not m.get("source_repo") or not re.fullmatch(r"[a-f0-9]{40}", m.get("source_commit", "")):
             raise ValueError(f"Missing pinned source: {m['folder']}")
     bundle = library.parent
-    excluded = json.loads((bundle / "excluded-modules.json").read_text())["modules"]
+    excluded = json.loads((bundle / "excluded-modules.json").read_text(encoding="utf-8"))["modules"]
     if set(folders) & {m["folder"] for m in excluded}:
         raise ValueError("An excluded module is distributed")
-    provenance = json.loads((bundle / "provenance.json").read_text())
+    provenance = json.loads((bundle / "provenance.json").read_text(encoding="utf-8"))
     for m in provenance["modules"]:
         base = library / m["folder"]
         expected = m["files"]
@@ -56,7 +57,7 @@ def validate(root: Path = ROOT) -> None:
         if p.name == ".env" or p.suffix in {".pem", ".key"}:
             raise ValueError(f"Potential credential file: {p}")
         if p.suffix in {".md", ".json", ".yaml", ".yml", ".toml", ".py", ".js", ".mjs", ".sh", ".txt"}:
-            text = p.read_text(errors="replace")
+            text = p.read_text(encoding="utf-8", errors="replace")
             if re.search(r"/Users/[a-z][0-9]{5,}(?:/|\b)", text) or SECRET.search(text):
                 raise ValueError(f"Personal path or credential pattern in {p}")
     for name in ["LICENSE", "NOTICE"]:
@@ -66,6 +67,8 @@ def validate(root: Path = ROOT) -> None:
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--root", type=Path, default=ROOT)
     a = p.parse_args()
