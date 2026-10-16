@@ -1,4 +1,4 @@
-# Research Router Skills
+# Research-Router-Paper-Skills
 
 [English](README_EN.md) · [模块目录](docs/MODULES.md) · [来源与许可证](docs/LICENSING.md)
 
